@@ -1,0 +1,7 @@
+{
+  "name": "QuickPark",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
