@@ -44,21 +44,7 @@
         <small class="error-message">El RUT es requerido.</small>
       </div>
     </ion-item>
-    <ion-item>
-      <ion-label position="floating">Correo Electrónico Alternativo</ion-label>
-      <ion-input type="email" formControlName="alternateEmail" required></ion-input>
-      <div *ngIf="registerForm.get('alternateEmail').hasError('required')">
-        <small class="error-message">El correo electrónico alternativo es requerido.</small>
-      </div>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Número de Teléfono</ion-label>
-      <ion-input type="tel" formControlName="phoneNumber" required></ion-input>
-      <div *ngIf="registerForm.get('phoneNumber').hasError('required')">
-        <small class="error-message">El número de teléfono es requerido.</small>
-      </div>
-    </ion-item>
-    <ion-button expand="block" type="submit" [attr.disabled]="registerForm?.invalid ? true : null">Crear Cuenta</ion-button>
+    <ion-button type="submit" expand="block">Crear Cuenta</ion-button>
   </form>
 </ion-content>
 

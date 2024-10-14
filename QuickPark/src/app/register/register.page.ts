@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.css']
 })
-export class RegisterComponent implements OnInit {
-  registerForm: FormGroup = new FormGroup({}); // Inicializa la propiedad con un FormGroup vacío
+export class RegisterPage implements OnInit {
+  registerForm: FormGroup = new FormGroup({});
 
   constructor(private authService: AuthService, private router: Router) { }
 
