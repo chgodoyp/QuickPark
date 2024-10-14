@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,26 +8,36 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  email: string = ''; // Inicializa el campo de correo electrónico
-  password: string = ''; // Inicializa el campo de contraseña
+  credentials = {
+    email: '',
+    password: ''
+  };
 
-  constructor(private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  // Método para manejar el inicio de sesión
-  onLogin() {
-    // Aquí puedes agregar la lógica para manejar el inicio de sesión
-    console.log('Login', this.email, this.password);
-    
-    // Aquí puedes implementar la lógica de autenticación
-    // Si el inicio de sesión es exitoso, puedes navegar a otra página
-    this.router.navigate(['/home']); // Descomenta esto para redirigir
-  }
-
-  // Método para navegar a la página de registro
-  navigateToRegister() {
-    this.router.navigate(['/register']);
+  login() {
+    this.authService.login(this.credentials).subscribe((response: any) => {
+      if (response && response.success) {
+        console.log('Login exitoso');
+        this.authService.setToken(response.token); // Guardamos el token en el servicio de autenticación
+        this.router.navigateByUrl('/folder'); // Redirigimos al usuario a la página /folder
+      } else {
+        console.error('Login fallido');
+        alert('Credenciales incorrectas. Por favor, inténtalo de nuevo.'); // Mensaje de error si el login falla
+      }
+    }, (error) => {
+      console.error('Error al iniciar sesión:', error);
+      alert('Error al iniciar sesión. Por favor, inténtalo de nuevo.'); // Manejo de errores
+    });
   }
 }
+
+
+
+
+
+
+
 
 
 

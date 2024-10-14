@@ -1,33 +1,30 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { RouteReuseStrategy } from '@angular/router';
-import { AppRoutingModule } from './app-routing.module';
+
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+
 import { AppComponent } from './app.component';
-import { LoginPageModule } from './login/login.module';  // Si lo necesitas
-import { RegisterPageModule } from './register/register.module';  // Si lo necesitas
-import { FolderPageModule } from './folder/folder.module';  // Si lo necesitas
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule,
-    // Estos módulos son solo necesarios si no utilizas lazy loading
-    // Si usas lazy loading, no es necesario incluirlos aquí
-    LoginPageModule,        
-    RegisterPageModule,     
-    FolderPageModule        
+    AppRoutingModule
   ],
   providers: [
+    StatusBar,
+    SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA] // Agrega esta línea
 })
 export class AppModule {}
-
-
 
 
 

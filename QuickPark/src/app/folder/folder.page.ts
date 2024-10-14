@@ -1,17 +1,25 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-folder',
   templateUrl: './folder.page.html',
   styleUrls: ['./folder.page.scss'],
 })
-export class FolderPage implements OnInit {
-  public folder!: string;
-  private activatedRoute = inject(ActivatedRoute);
-  constructor() {}
+export class FolderPage {
+  folder: string = 'Mis Estacionamientos'; // Define la propiedad 'folder'
 
-  ngOnInit() {
-    this.folder = this.activatedRoute.snapshot.paramMap.get('id') as string;
+  constructor(private authService: AuthService, private router: Router) {}
+
+  logout() {
+    this.authService.logout();
+    this.router.navigateByUrl('/login'); // Redirige al usuario a la página de inicio de sesión
   }
 }
+
+
+
+
+
+
