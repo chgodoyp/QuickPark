@@ -1,0 +1,19 @@
+ion-content {
+    --background: #f8f9fa; /* Color de fondo claro */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrar el contenido verticalmente */
+    align-items: center; /* Centrar el contenido horizontalmente */
+    padding: 20px; /* Espaciado interno */
+  }
+  
+  ion-item {
+    width: 100%; /* Que ocupe todo el ancho disponible */
+    max-width: 400px; /* Ancho máximo para dispositivos más grandes */
+  }
+  
+  ion-button {
+    margin-top: 15px; /* Espacio entre los botones */
+    width: 100%; /* Que el botón ocupe todo el ancho disponible */
+  }
+  

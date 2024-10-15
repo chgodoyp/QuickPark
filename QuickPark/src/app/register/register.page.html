@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="register()" [formGroup]="registerForm">
+    <ion-item>
+      <ion-label position="floating">Correo Electrónico</ion-label>
+      <ion-input type="email" formControlName="email" required></ion-input>
+      <div *ngIf="registerForm.get('email').hasError('required')">
+        <small class="error-message">El correo electrónico es requerido.</small>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" formControlName="password" required></ion-input>
+      <div *ngIf="registerForm.get('password').hasError('required')">
+        <small class="error-message">La contraseña es requerida.</small>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Confirmar Contraseña</ion-label>
+      <ion-input type="password" formControlName="confirmPassword" required></ion-input>
+      <div *ngIf="registerForm.get('confirmPassword').hasError('required')">
+        <small class="error-message">La confirmación de contraseña es requerida.</small>
+      </div>
+      <div *ngIf="registerForm.get('confirmPassword').hasError('mismatch')">
+        <small class="error-message">La confirmación de contraseña no coincide con la contraseña original.</small>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nombre Completo</ion-label>
+      <ion-input formControlName="fullName" required></ion-input>
+      <div *ngIf="registerForm.get('fullName').hasError('required')">
+        <small class="error-message">El nombre completo es requerido.</small>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">RUT</ion-label>
+      <ion-input formControlName="rut" required></ion-input>
+      <div *ngIf="registerForm.get('rut').hasError('required')">
+        <small class="error-message">El RUT es requerido.</small>
+      </div>
+    </ion-item>
+    <ion-button type="submit" expand="block">Crear Cuenta</ion-button>
+  </form>
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
